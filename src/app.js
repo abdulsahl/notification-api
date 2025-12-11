@@ -2,8 +2,11 @@ const express = require('express');
 const cors = require('cors');
 const notificationRoutes = require('./routes/notificationRoutes');
 const sequelize = require('./config/database');
+const initSubscriber = require('./services/redisSubscriber');
 
 const app = express();
+
+initSubscriber(); // Start listening for events
 
 app.use(cors());
 app.use(express.json());
