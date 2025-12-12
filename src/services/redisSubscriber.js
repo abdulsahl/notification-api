@@ -45,12 +45,8 @@ async function initSubscriber() {
                 // Create Notification in Database
                 await Notification.create({
                     user_id: claimant_id,
-                    title: title,
                     message: body,
-                    type: type,
-                    data: { report_id, status },
-                    created_at: new Date(),
-                    updated_at: new Date()
+                    created_at: new Date()
                 });
 
                 console.log(`Notification created for User ${claimant_id}`);

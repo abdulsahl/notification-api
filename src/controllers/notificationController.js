@@ -2,18 +2,15 @@ const Notification = require('../models/notification');
 
 exports.createNotification = async (req, res) => {
     try {
-        const { user_id, title, message, type, data } = req.body;
+        const { user_id, message } = req.body;
 
-        if (!user_id || !title || !message) {
+        if (!user_id || !message) {
             return res.status(400).json({ error: 'Missing required fields' });
         }
 
         const notification = await Notification.create({
             user_id,
-            title,
-            message,
-            type,
-            data
+            message
         });
 
         res.status(201).json(notification);
